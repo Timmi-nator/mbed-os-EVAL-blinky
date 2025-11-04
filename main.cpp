@@ -6,8 +6,8 @@
 #include "mbed.h"
 
 
-DigitalOut led1(D2);
-DigitalOut led3(D3);
+DigitalOut led1(LED1);
+DigitalOut led2(LED2);
 
 int main()
 {
