@@ -1,27 +1,23 @@
-/* mbed Microcontroller Library
- * Copyright (c) 2019 ARM Limited
- * SPDX-License-Identifier: Apache-2.0
- */
-
 #include "mbed.h"
 
+#define SLEEP_TIME              250ms
+#define USER_BUTTON             PC_13
 
-DigitalOut led1(LED1);
-DigitalOut led2(LED2);
+DigitalOut led(LED1);
+DigitalIn button(USER_BUTTON);
 
 int main()
 {
    
     while (true) {
-        led1 = 1;
-        led2 = 0;
-        ThisThread::sleep_for(500ms);
-
-        led1 = 0;
-        led2 = 1;
-        ThisThread::sleep_for(1000ms);
-
-        led2 = 0;
-
+        if (button.read() == 0)
+        {
+            led = 0;
+        }
+        else
+        {
+            led = 1;
+        }
+        ThisThread::sleep_for(SLEEP_TIME);
     }
 }
